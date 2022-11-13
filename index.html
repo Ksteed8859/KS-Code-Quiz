@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> KS Code Quiz</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" contents="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" type="text/css" href="./Assets/style.css"/>
+    </head>
+
+    <body>
+        <header>
+            <div class="large-font">Coding Quiz!</div>
+            <button class="start-button">Start</button>
+        </header>
+        <main>
+            <div id="quiz" style="display: none">
+                <div id="question"></div>
+                <div id="choices">
+                    <div class="choice" id="A" oneclick="checkAnswer('A')"></div>
+                    <div class="choice" id="B" oneclick="checkAnswer('B')"></div>
+                    <div class="choice" id="C" oneclick="checkAnswer('C')"></div>
+                    <div class="choice" id="D" oneclick="checkAnswer('D')"></div>
+                </div>
+            </div>    
+            <div class="quizTimer">
+                <div class="timer-text"></div>
+                <div class="large-font timer-count"> 0 </div>
+            </div>
+
+            <div id="scoreContainer" style="display: none"></div>
+                    
+            
+            
+
+        </main>
+        <script src="./Assets/script.js"></script>
+    </body>
+</html>
