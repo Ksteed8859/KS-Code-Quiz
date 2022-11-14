@@ -1,13 +1,14 @@
 // Constants and Variables
-
-const startButton = document.querySelector(".start-button");
-const quiz = document.querySelector(".quiz");
-const question = document.querySelector(".question");
+const header = document.querySelector(".header");
+const startButton = document.getElementsByClassName("start-button");
+const quiz = document.getElementById("quiz");
+const question = document.getElementById("question");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
-const timerEl = document.querySelector(".timer-count");
+const timerEl = document.getElementById("timer-count");
+const quizTimer = document.getElementById("quizTimer")
 
 // Questions
 
@@ -48,4 +49,33 @@ var questions = [
         choiceD: "console log",
         correct : "D"
     }
-]
+];
+
+const lastQuestion= questions.length - 1;
+var runningQuestion = 0;
+
+//Render in a question
+
+function renderQuestion () {
+    let q = questions[runningQuestion];
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+}
+// Render in timer
+//function renderCounter() {
+    
+//}
+
+//Start Quiz
+
+function startQuiz(){
+    //header.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block";
+    //quizTimer = setInterval(renderCounter, 1000);
+}
+
+startButton.addEventListener("click", startQuiz());
