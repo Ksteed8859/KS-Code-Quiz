@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
-        <title> KS Code Quiz</title>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" contents="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" type="text/css" href="./Assets/style.css"/>
+        <meta charset="UTF-8">
+        <title>KS Coding Quiz</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <header>
-            <div class="large-font">Coding Quiz!</div>
-            <button class="start-button">Start</button>
-        </header>
-        <main>
-            <div id="quiz" style="display: none">
+        <div id="highscore">
+            <a href="">View High Scores</a>
+        </div>
+        <div id="timer-text">Time: 0</div>
+        <div id="start">
+            <h1>Coding Quiz Challenge!</h1>
+            <p> 
+                Try to answer the following code-related questions within the time limit.
+                Keep in mind that incorrect answers will penalize your score/time by ten seconds!
+            </p>
+            <button id="start-button">Start Quiz!</button>
+        </div>    
+        <div id="container">
+            <div id="quiz">
                 <div id="question"></div>
+                
                 <div id="choices">
-                    <div class="choice" id="A" oneclick="checkAnswer('A')"></div>
-                    <div class="choice" id="B" oneclick="checkAnswer('B')"></div>
-                    <div class="choice" id="C" oneclick="checkAnswer('C')"></div>
+                    <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+                    <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+                    <div class="choice" id="C" onclick="checkAnswer('C')"></div>
                     <div class="choice" id="D" oneclick="checkAnswer('D')"></div>
                 </div>
-            </div>    
-            <div class="quizTimer">
-                <div class="timer-text"></div>
-                <div class="large-font timer-count"> 0 </div>
+                
+                <div id="timer">
+                    <div id="counter"></div>
+                    <div id="btimeGauge"></div>
+                    <div id="timeGauge"></div>
+                </div>
             </div>
 
             <div id="scoreContainer" style="display: none"></div>
-                    
-            
-            
 
-        </main>
-        <script src="./Assets/script.js"></script>
+        </div>
+
+        <script src="script.js"></script>
+
     </body>
 </html>
