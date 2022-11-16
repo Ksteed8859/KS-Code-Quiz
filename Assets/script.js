@@ -59,10 +59,10 @@ var runningQuestion = 0;
 function renderQuestion () {
     let q = questions[runningQuestion];
     question.innerHTML = "<p>" + q.question + "</p>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
+    choiceA.innerHTML = "<p>" + q.choiceA + "</p>";
+    choiceB.innerHTML = "<p>" + q.choiceB + "</p>";
+    choiceC.innerHTML = "<p>" + q.choiceC + "</p>";
+    choiceD.innerHTML = "<p>" + q.choiceD + "</p>";
 }
 // Render in timer
 //function renderCounter() {
