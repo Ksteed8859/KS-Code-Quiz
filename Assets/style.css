@@ -18,14 +18,14 @@
 #start {
     text-align: center;
     position: absolute;
-    left:300px;
-    top: 200px;
+    left:20%;
+    top: 25%;
 }
 
 #start-btn {
     cursor: pointer;
     color: white;
-    background-color: blueviolet;
+    background-color: rgb(64, 22, 142);
     display: inline-block;
     text-align: center;
     width: 25%;
@@ -33,4 +33,77 @@
     padding: 15px;
     border-radius: 20px;
     font-size: large; 
+}
+#start-btn:hover {
+    background-color: rgb(199, 47, 199);
+}
+
+#quiz-page {
+    text-align: center;
+    position: absolute;
+    left:30%;
+    top: 25%;
+}
+
+#question {
+    font-size: 30px;
+}
+
+#correct-status {
+    text-align: center;
+    position: absolute;
+    font-size: 20px;
+    color: grey;
+    font-style: italic;
+}
+
+.choice1, .choice2, .choice3, .choice4 {
+    cursor: pointer;
+    color: white;
+    background-color: rgb(64, 22, 142);
+    display: block;
+    text-align: center;
+    width: 75%;
+    height: 25%;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 20px;
+    font-size: large; 
+}
+.choice1:hover, .choice2:hover, .choice3:hover, .choice4:hover {
+    background-color: rgb(199, 47, 199);
+}
+
+#finish-page {
+    text-align: center;
+    font-size: large;
+    position: absolute;
+    left:50%;
+    top: 25%;
+}
+
+#submit-btn {
+    cursor: pointer;
+    color: white;
+    background-color: rgb(64, 22, 142); 
+}
+#submit-btn:hover {
+    background-color: rgb(199, 47, 199);
+}
+
+#highscore-page {
+    text-align: center;
+    font-size: large;
+    position: absolute;
+    left:50%;
+    top: 25%;
+}
+
+#back-btn {
+    cursor: pointer;
+    color: white;
+    background-color: rgb(64, 22, 142); 
+}
+#back-btn:hover {
+    background-color: rgb(199, 47, 199);
 }

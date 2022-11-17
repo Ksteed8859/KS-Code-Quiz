@@ -6,7 +6,7 @@ var timerText = document.getElementById("timer-text")
 
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-var carousel = document.getElementById("carouselbox");
+var questionbox = document.getElementById("questionbox");
 
 var choiceBtn1 = document.querySelector(".choice1");
 var choiceBtn2 = document.querySelector(".choice2");
@@ -29,7 +29,7 @@ var highscorePage = document.getElementById("highscore-page");
 var userRecord = document.getElementById("record");
 var backBtn = document.getElementById("back-btn");
 
-//check
+
 var questions = [
     {
         q: "Commonly used data types do not include:",
@@ -63,7 +63,7 @@ var questionNumber = 0;
 var score = 0;
 var questionCount = 1;
 
-//check
+
 function timerStart() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -72,24 +72,25 @@ function timerStart() {
                 clearInterval(timerInterval);
                 timerText.textContent = "Time is up!";
                 finish.textContent = "Time is up!";
-                gameOver();
-            } else if (questionCount >= questionArray.length +1) {
+                quizEnd();
+            } else if (questionCount >= questions.length +1) {
                 clearInterval(timerInterval);
-                gameOver();
+                quizEnd();
             }
     }, 1000);
 }
 
-//check
+
 function startQuiz () {
     start.style.display = "none";
+    questionbox.style.display= "block";
     quiz.style.display = "block";
     questionNumber = 0
     timerStart();
     loadQuestion(questionNumber);
   
 }
-//check
+
 function loadQuestion (n) {
     question.textContent = questions[n].q;
     a1.textContent = questions[n].choices[0];
@@ -98,7 +99,7 @@ function loadQuestion (n) {
     a4.textContent = questions[n].choices[3];
     questionNumber = n;
 }
-//Not Working
+
 function checkAnswer(event) {
     event.preventDefault();
     check.style.display = "block";
@@ -141,10 +142,10 @@ function getScore() {
 }
 
 function addScore() {
-    userRecord.innerHTML = "";
+    userRecord.innerHTML;
     userRecord.style.display ="block";
     var li = document.createElement("li");
-    li.textContent = item.initials + " " + item.score;
+    li.textContent = item.initials + "-" + item.score;
     li.setAttribute("data-index", i);
     userRecord.appendChild(li);
 }
@@ -156,12 +157,13 @@ function addItem (n) {
 }
 function saveScore () {
     var scoreItem ={
-        user: userInitial.value,
-        score: totalScore
+        user: initials.value,
+        score: score.value,
     }
     addItem(scoreItem);
-    renderScore();
+    addScore;
 }
+
 
 startButton.addEventListener("click", startQuiz);
 choiceBtn1.addEventListener("click", checkAnswer);
@@ -175,7 +177,7 @@ submitBtn.addEventListener("click", function(event) {
     start.style.display = "none";
     highscorePage.style.display = "block";
     quiz.style.display = "none";
-    saveScore()
+    saveScore;
 });
 
 highscoreLink.addEventListener("click", function(event) {
@@ -184,7 +186,7 @@ highscoreLink.addEventListener("click", function(event) {
     start.style.display = "none";
     highscorePage.style.display = "block";
     quiz.style.display ="none";
-    renderScore();
+    addScore();
 });
 
 backBtn.addEventListener("click", function(event) {
