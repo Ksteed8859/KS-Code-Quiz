@@ -26,6 +26,8 @@ var submitBtn = document.getElementById("submit-btn");
 var finish = document.getElementById("finish")
 
 var highscorePage = document.getElementById("highscore-page");
+var scoreListEl = document.getElementById("highScores")
+scoreList = [];
 var userRecord = document.getElementById("record");
 var backBtn = document.getElementById("back-btn");
 
@@ -33,27 +35,27 @@ var backBtn = document.getElementById("back-btn");
 var questions = [
     {
         q: "Commonly used data types do not include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
+        choices: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
         correct: "c"
     },
     {
         q: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+        choices: ["1. Quotes", "2. Curly Brackets", "3. Parentheses", "4. Square Brackets"],
         correct: "c"
     },
     {
         q: "Arrays in Javascript can be used to store ____.",
-        choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+        choices: ["1. Numbers and Strings", "2. Other Arrays", "3. Booleans", "4. All of the Above"],
         correct: "d"
     },
     {
         q: "String values must be enclosed within ____ when being assigned to variables.",
-        choices: ["commas", "curly brackets", "quotes", "parenthesis"],
+        choices: ["1. Commas", "2. Curly Brackets", "3. Quotes", "4. Parenthesis"],
         correct: "c"
     },
     {
         q: "A very useful tool for used during development and debugging for printing content to the debugger is:",
-        choices: ["Javascript", "terminal / bash", "for loops", "console log"],
+        choices: ["1 Javascript", "2. Terminal / Bash", "3. For Loops", "4. Console Log"],
         correct: "d"
     },
 ];
@@ -130,40 +132,30 @@ function quizEnd() {
     timerText.style.display = "none";
 }
 
-function getScore() {
-    var currentList =localStorage.getItem("ScoreList");
-    if (currentList !== null ){
-        freshList = JSON.parse(currentList);
-        return freshList;
-    } else {
-        freshList = [];
+// High Scores
+function addScore(event) {
+    event.preventDefault();
+
+    scoreList.push({initials, score});
+
+    scoreListEl.innerHTML="";
+    for (var i =0; i < scoreList.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        scoreListEl.append(li);
     }
-    return freshList;
+    saveScores();
+    displayScores();
 }
-
-function addScore() {
-    userRecord.innerHTML;
-    userRecord.style.display ="block";
-    var li = document.createElement("li");
-    li.textContent = item.initials + "-" + item.score;
-    li.setAttribute("data-index", i);
-    userRecord.appendChild(li);
+function saveScores() {
+    localStorage.setItem("scoreList", JSON.stringify(scoreList));
 }
-
-function addItem (n) {
-    var addedList = getScore()
-    addedList.push(n);
-    localStorage.setItem("ScoreList", JSON.stringify(addedList));
-}
-function saveScore () {
-    var scoreItem ={
-        user: initials.value,
-        score: score.value,
+function displayScores() {
+    var savedScoreList = json.parse(localStorage.getItem("scoreList"));
+    if (savedScoreList !== null) {
+        scoreList = savedScoreList
     }
-    addItem(scoreItem);
-    addScore;
 }
-
 
 startButton.addEventListener("click", startQuiz);
 choiceBtn1.addEventListener("click", checkAnswer);
@@ -177,7 +169,7 @@ submitBtn.addEventListener("click", function(event) {
     start.style.display = "none";
     highscorePage.style.display = "block";
     quiz.style.display = "none";
-    saveScore;
+    addScore;
 });
 
 highscoreLink.addEventListener("click", function(event) {
