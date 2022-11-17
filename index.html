@@ -5,12 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>KS Coding Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./Assets/style.css">
 </head>
 
 <body>
     <div id="highscore">
-        <a href="">View High Scores</a>
+        <a href="highscore.html">View High Scores</a>
     </div>
     <div id="timer-text">Time: 75 seconds</div>
     <div id="start">
@@ -24,13 +24,13 @@
     <section id="quiz-page">
         <div id="quiz">
 
-            <div id="question"></div>
+            <h2 id="question"></h2>
 
-            <div id="choices">
-                <button class="choice" id="A"></button>
-                <button class="choice" id="B"></button>
-                <button class="choice" id="C"></button>
-                <button class="choice" id="D"></button>
+            <div id="choices" style="display:none">
+                <button class="choice" id="A" value="a"></button>
+                <button class="choice" id="B" value="b"></button>
+                <button class="choice" id="C" value="c"></button>
+                <button class="choice" id="D" value="d"></button>
             </div>
 
             <div id="correct-status"></div>
@@ -38,27 +38,27 @@
         </div>
     </section>
 
-    <section id="finish-page">
+    <section id="finish-page" style="display:none">
         <div>
             <h2>All Done!</h2>
-            <p>Your final score is: </p>
+            <p id="final-score">Your final score is: </p>
             <p>Enter Initials</p>
                 <input id="initials">
                 <button id="submit-btn">Submit</button>
         </div>
     </section>
 
-    <section id="highscore-page">
+    <section id="highscore-page" style="display: none">
         <div>
             <h2>High Scores</h2>
-            <p>Your record</p>
+            <p id="record">Your record</p>
         </div>
         <div>
             <button id="back-btn">Go back</button>
         </div>
     </section>
-    
-    <script src="script.js"></script>
+
+    <script src="./Assets/script.js"></script>
 
 </body>
 
