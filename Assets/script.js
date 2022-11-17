@@ -6,7 +6,13 @@ var timerText = document.getElementById("timer-text")
 
 var quiz = document.getElementById("quiz");
 var question = document.getElementById("question");
-var choices = document.getElementById("choices");
+var carousel = document.getElementById("carouselbox");
+
+var choiceBtn1 = document.querySelector(".choice1");
+var choiceBtn2 = document.querySelector(".choice2");
+var choiceBtn3 = document.querySelector(".choice3");
+var choiceBtn4 = document.querySelector(".choice4");
+
 var a1 = document.getElementById("A");
 var a2 = document.getElementById("B");
 var a3 = document.getElementById("C");
@@ -23,6 +29,7 @@ var highscorePage = document.getElementById("highscore-page");
 var userRecord = document.getElementById("record");
 var backBtn = document.getElementById("back-btn");
 
+//check
 var questions = [
     {
         q: "Commonly used data types do not include:",
@@ -56,7 +63,7 @@ var questionNumber = 0;
 var score = 0;
 var questionCount = 1;
 
-
+//check
 function timerStart() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -73,6 +80,7 @@ function timerStart() {
     }, 1000);
 }
 
+//check
 function startQuiz () {
     start.style.display = "none";
     quiz.style.display = "block";
@@ -81,6 +89,7 @@ function startQuiz () {
     loadQuestion(questionNumber);
   
 }
+//check
 function loadQuestion (n) {
     question.textContent = questions[n].q;
     a1.textContent = questions[n].choices[0];
@@ -89,7 +98,7 @@ function loadQuestion (n) {
     a4.textContent = questions[n].choices[3];
     questionNumber = n;
 }
-
+//Not Working
 function checkAnswer(event) {
     event.preventDefault();
     check.style.display = "block";
@@ -155,9 +164,10 @@ function saveScore () {
 }
 
 startButton.addEventListener("click", startQuiz);
-choices.forEach(function(click) {
-    click.addEventListener("chick", checkAnswer);
-});
+choiceBtn1.addEventListener("click", checkAnswer);
+choiceBtn2.addEventListener("click", checkAnswer);
+choiceBtn3.addEventListener("click", checkAnswer);
+choiceBtn4.addEventListener("click", checkAnswer);
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
