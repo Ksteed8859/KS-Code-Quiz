@@ -1,3 +1,5 @@
+// Define all Variables
+
 var start = document.getElementById("start");
 var startButton = document.getElementById("start-btn");
 
@@ -25,12 +27,16 @@ var initials = document.getElementById("initials");
 var submitBtn = document.getElementById("submit-btn");
 var finish = document.getElementById("finish")
 
+var userInitials = document.getElementById("user-initials");
+var userScore = document.getElementById("user-score");
+
 var highscorePage = document.getElementById("highscore-page");
 var scoreListEl = document.getElementById("highScores")
 scoreList = [];
 var userRecord = document.getElementById("record");
 var backBtn = document.getElementById("back-btn");
 
+// Questions to be asked
 
 var questions = [
     {
@@ -60,6 +66,8 @@ var questions = [
     },
 ];
 
+// Varibles for Timer
+
 var secondsLeft = 75;
 var questionNumber = 0;
 var score = 0;
@@ -82,6 +90,7 @@ function timerStart() {
     }, 1000);
 }
 
+//Start Quiz
 
 function startQuiz () {
     start.style.display = "none";
@@ -125,6 +134,8 @@ function checkAnswer(event) {
     questionCount++;
 }
 
+//Finish Quiz
+
 function quizEnd() {
     quiz.style.display = "none";
     finishPage.style.display = "block";
@@ -132,30 +143,31 @@ function quizEnd() {
     timerText.style.display = "none";
 }
 
+// Add score to scoreboard *NEEDS WORK*
+const values = {
+    playerInitials : initials,
+    playerScore : score
+}
+
+window.localStorage.setItem("values", JSON.stringify("values"));
+
 // High Scores
-function addScore(event) {
-    event.preventDefault();
 
-    scoreList.push({initials, score});
+function getHighscore() {
+    var initials = localStorage.getItem('playeIinitials')
+    var score = localStorage.getItem('playerScore')
+    var values = localStorage.getItem('values')
+    var liItem = document.createElement('li')
 
-    scoreListEl.innerHTML="";
-    for (var i =0; i < scoreList.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
-        scoreListEl.append(li);
+    for (let i = 0; i < 5; i++) {
+        liItem.innerText = `${values[i].playerInitials} - ${values[i].playerScore}`;
     }
-    saveScores();
-    displayScores();
+
+    userInitials.textContent = initials;
+    userScore.textContent = score;
 }
-function saveScores() {
-    localStorage.setItem("scoreList", JSON.stringify(scoreList));
-}
-function displayScores() {
-    var savedScoreList = json.parse(localStorage.getItem("scoreList"));
-    if (savedScoreList !== null) {
-        scoreList = savedScoreList
-    }
-}
+
+// Event Listeners
 
 startButton.addEventListener("click", startQuiz);
 choiceBtn1.addEventListener("click", checkAnswer);
@@ -169,7 +181,10 @@ submitBtn.addEventListener("click", function(event) {
     start.style.display = "none";
     highscorePage.style.display = "block";
     quiz.style.display = "none";
-    addScore;
+    getHighscore();
+    
+    userInitials.textContent = initials.value;
+    userScore.textContent = score;
 });
 
 highscoreLink.addEventListener("click", function(event) {
@@ -178,7 +193,7 @@ highscoreLink.addEventListener("click", function(event) {
     start.style.display = "none";
     highscorePage.style.display = "block";
     quiz.style.display ="none";
-    addScore();
+    getHighscore();
 });
 
 backBtn.addEventListener("click", function(event) {
